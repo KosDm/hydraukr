@@ -161,7 +161,7 @@
 
 
 
-                  <form action="#" method="post" name="car-select-form" id="car-select-form">
+                  <form action="#" method="post" name="quick-contact" id="quick-contact">
 
                     <div class="alert alert-danger hidden" id="car-select-form-msg">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -274,7 +274,8 @@
                   <div class="newsletter-form pull-left">
                     <form action="#" method="post" name="newsletter-form" id="newsletter-form">
                       <div class="input-group">
-                        <input type="email" name="newsletter-email" class="form-control" placeholder="Введіть ваш e-mail">
+                      	<input type="fname" name="newsletter-fname" class="form-control" placeholder="Введіть вашe ім'я">
+                        <input type="phone" name="newsletter-phone" class="form-control" placeholder="№телефону">
                         <span class="input-group-btn">
                           <input class="btn btn-default button" type="submit" value="надіслати">
                         </span>
@@ -358,7 +359,7 @@
                       <td>25 years</td>
                     </tr>
                   </table>
-                  <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                  <button class="reserve-button" data-product="1"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
                 </div>
               </div>
               <!-- Vehicle 1 data end -->
@@ -402,7 +403,7 @@
                       <td>25 years</td>
                     </tr>
                   </table>
-                  <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                  <button class="reserve-button" data-product="2"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
                 </div>
               </div>
               <!-- Vehicle 1 data end -->
@@ -446,7 +447,7 @@
                       <td>25 years</td>
                     </tr>
                   </table>
-                  <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                  <button class="reserve-button" data-product="3"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
                 </div>
               </div>
               <!-- Vehicle 3 data end -->
@@ -490,7 +491,7 @@
                       <td>25 years</td>
                     </tr>
                   </table>
-                  <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                  <button class="reserve-button" data-product="4"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
                 </div>
               </div>
               <!-- Vehicle 4 data end -->
@@ -534,7 +535,7 @@
                       <td>25 years</td>
                     </tr>
                   </table>
-                  <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                  <button class="reserve-button" data-product="5"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
                 </div>
               </div>
               <!-- Vehicle 5 data end -->
@@ -578,7 +579,7 @@
                       <td>25 years</td>
                     </tr>
                   </table>
-                  <a href="#teaser" class="reserve-button scroll-to"><span class="glyphicon glyphicon-calendar"></span> Reserve now</a>
+                  <button class="reserve-button" data-product="6"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
                 </div>
               </div>
               <!-- Vehicle 6 data end -->
@@ -656,20 +657,7 @@
         <!-- Information start -->
         <section id="information" class="container">
 
-          <!-- Single photo start -->
-          <div class="row wow fadeInLeft" data-wow-offset="100">
-            <div class="col-md-6 col-xs-12 pull-right">
-              <img src="img/info-img.jpg" alt="Info Img" class="img-responsive">
-            </div>
-            <div class="col-md-6 pull-left">
-              <h2 class="title">Quality Guaranteed</h2>
-              <h3 class="subtitle">Here is an example with one single photo displayed on the right.</h3>
-              <p>Here is some dummy text. <span class="my-tooltip" data-toggle="tooltip" title="" data-original-title="This is an demo tooltip!">Hover over me!</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, vero voluptas delectus explicabo maxime ad qui incidunt! Saepe.</p>
-              <a href="#" class="btn">More information</a>
-              <a href="#" class="btn btn-gray">Buy this theme</a>
-            </div>
-          </div>
-          <!-- Single photo end -->
+
           
           <!-- Video start -->
           <div class="row wow fadeInRight" data-wow-offset="50">
@@ -830,30 +818,33 @@
                     <!-- Checkout Rental Info start -->
                     <div class="checkout-vehicle-info">
                       <div class="location-date-info">
-                        <h3>Дані клієнта</h3>
+                        <h3>Інформація про вас</h3>
+
                         <div class="info-box">
                           <span class="glyphicon glyphicon-user"></span>
-                          <h4 class="info-box-title">Ім'я клієнта</h4>
+                          <h4 class="info-box-title">Ваше ім'я</h4>
                           <p class="info-box-description" id="first-name-ph"></p>
-                          <input type="hidden" name="pick-up" id="first-name-fo" value="">
+                          <input type="text" name="pick-up" id="first-name-fo" value="">
                         </div>
+
                         <div class="info-box">
                           <span class="glyphicon glyphicon-earphone"></span>
                           <h4 class="info-box-title">Номер телефону</h4>
                           <p class="info-box-description" id="phone-number-ph"></p>
-                          <input type="hidden" name="drop-off" id="phone-number-fo" value="">
+                          <input type="text" name="drop-off" id="phone-number-fo" value="">
                         </div>
+
                         <div class="info-box">
                           <span class="glyphicon glyphicon-envelope"></span>
                           <h4 class="info-box-title">Е - пошта</h4>
                           <p class="info-box-description" id="guest-email-ph"></p>
-                          <input type="hidden" name="pickup-location" id="guest-email-fo" value="">
+                          <input type="text" name="pickup-location" id="guest-email-fo" value="">
                         </div>
                       </div>
 
                       <div class="vehicle-info">
-                        <h5>Обраний продукт: <span id="selected-car-ph"></span></h5> <a href="#vehicles" class="scroll-to">[ Переглянути продукти ]</a>
-                        <input type="hidden" name="selected-car" id="selected-car" value="">
+                        <h5>Обраний продукт: <span id="selected-product-ph"></span></h5> <a href="#vehicles" class="scroll-to">[ Переглянути продукти ]</a>
+                        <input type="hidden" name="selected-product" id="selected-product" value="">
                         <div class="clearfix"></div>
                         <div class="vehicle-image">
                           <img class="img-responsive" id="selected-vehicle-image" src="img/vehicle1.jpg" alt="Vehicle">
@@ -865,17 +856,7 @@
                     </div>
                     <!-- Checkout Rental Info end -->
 
-                    <hr>
-   
-                  <div class="newsletter">
-                    <div class="form-group">
-                      <div class="checkbox">
-                        <input id="check1" type="checkbox" name="newsletter" value="yes">
-                        <label for="check1">Відправляти вам наші новинки та пропозиції</label>
-                      </div>
-                    </div>
 
-                  </div>
                 </div>
                 <!-- Modal body end -->
 
