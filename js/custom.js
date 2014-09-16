@@ -5,7 +5,7 @@
 //-------------------------------------------------------------
 
 var companyName = "Car Rental Station"; // Enter your event title
-
+var product_id='';
 
 // Initialize Tooltip  
 //-------------------------------------------------------------
@@ -290,6 +290,32 @@ $( "#contact-form" ).submit(function() {
 
 // Hydra Select Form
 //-------------------------------------------------------------------------------
+$(".reserve-button").click(function () {
+  product_id=$(this).data("product");
+  console.log($(this).data("product"))
+  console.log($('a[href="#vehicle-'+product_id+'"]').html())
+  
+
+  var selectedProduct=$('a[href="#vehicle-'+product_id+'"]').html()
+  var selectImage="img/vehicle" + product_id + ".jpg"
+
+  $("#selected-product-ph").html(selectedProduct);
+  $("#selected-product").val(selectedProduct);
+  $('#selected-vehicle-image').attr('src',selectImage)
+  $('#checkoutModal').modal();
+
+  
+})
+
+$( "#quick-contact" ).submit(function() {
+
+    alert("Записано")
+
+    }
+)
+
+
+
 
 $( "#car-select-form" ).submit(function() {
 
