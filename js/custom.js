@@ -319,6 +319,10 @@ $( "#contact-form" ).submit(function() {
 
   $('#contact-form input[type=submit]').attr('disabled', 'disabled');
   $("#contact-form #point-where").val('Форма3')
+    $("#contact-form #first-name").parent().removeClass('has-error')
+    $("#contact-form #phone-number").parent().removeClass('has-error')
+    $("#contact-form #guest-email").parent().removeClass('has-error')
+    $("#contact-form #message").parent().removeClass('has-error')
     var error=0;
     if (validateNotEmpty($("#contact-form #first-name").val())) {
         error=1
@@ -329,6 +333,17 @@ $( "#contact-form" ).submit(function() {
         error=1
         $("#contact-form #phone-number").parent().addClass('has-error')
     };
+    if (validateNotEmpty($("#contact-form #guest-email").val())) {
+        error=1
+        $("#contact-form #guest-email").parent().addClass('has-error')
+        
+    };
+    if (validateNotEmpty($("#contact-form #message").val())) {
+        error=1
+        $("#contact-form #message").parent().addClass('has-error')
+    };
+
+
 
 
     if (error==0) {
@@ -373,7 +388,7 @@ $( "#contact-form" ).submit(function() {
 
   } else{
         $('#contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#contact-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#contact-form-msg').html("Ви не заповнили усі поля");
         $('#contact-form input[type=submit]').removeAttr('disabled');
   };
   return false;
@@ -394,6 +409,12 @@ $( "#checkout-form" ).submit(function() {
 
   $('#checkout-form button[type=submit]').attr('disabled', 'disabled');
   $("#checkout-form #point-where").val('Форма4')
+    $("#checkout-form #first-name").parent().removeClass('has-error')
+    $("#checkout-form #phone-number").parent().removeClass('has-error')
+    $("#checkout-form #guest-email").parent().removeClass('has-error')
+    $("#checkout-form #message").parent().removeClass('has-error')
+
+
     var error=0;
     if (validateNotEmpty($("#checkout-form #first-name").val())) {
         error=1
@@ -403,6 +424,15 @@ $( "#checkout-form" ).submit(function() {
     if (validateNotEmpty($("#checkout-form #phone-number").val())) {
         error=1
         $("#checkout-form #phone-number").parent().addClass('has-error')
+    };
+        if (validateNotEmpty($("#checkout-form #guest-email").val())) {
+        error=1
+        $("#checkout-form #guest-email").parent().addClass('has-error')
+        
+    };
+    if (validateNotEmpty($("#checkout-form #message").val())) {
+        error=1
+        $("#checkout-form #message").parent().addClass('has-error')
     };
     if (error==0) {
   $.ajax({
@@ -447,8 +477,8 @@ $( "#checkout-form" ).submit(function() {
 
     } else{
         $('#checkout-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#checkout-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
-        $('#checkout-form input[type=submit]').removeAttr('disabled');        
+        $('#checkout-form-msg').html("Ви не заповнили усі поля");
+        $('#checkout-form button[type=submit]').removeAttr('disabled');        
     };
 
 return false;

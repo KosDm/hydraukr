@@ -17,7 +17,6 @@ $isValid = GUMP::is_valid($_POST, array(
 	'point-where' => 'required'	
 	));
 
-echo $_POST."<br/><br/><br/>validation=".$isValid;
 if($isValid === true) {
 
 	// Submit Mail
@@ -38,6 +37,7 @@ if($isValid === true) {
 		);
 
 	echo json_encode($result);
+	return json_encode($result);
 
 } else {
 	$result = array(
@@ -46,6 +46,7 @@ if($isValid === true) {
 		);
 
 	echo json_encode($result);
+	return json_encode($result);
 }
 
 

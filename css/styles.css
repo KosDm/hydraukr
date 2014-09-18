@@ -966,8 +966,8 @@ header.large .brand {
 #contact form .text-field {
   background-color: #dbdbdb;
   height: 45px;
-  border-radius: 0;
-  border: none;
+  /*border-radius: 0;
+  border: 1px;*/
   box-shadow: none;
   font-size: 18px;
 }
@@ -1217,7 +1217,7 @@ footer .footer-nav li a {
   padding: 9px 10px;
   height: 39px;
 }
-#checkoutModal form input {
+/*#checkoutModal form input {
   background-color: #dbdbdb;
   height: 45px;
   border-radius: 0;
@@ -1225,7 +1225,7 @@ footer .footer-nav li a {
   box-shadow: none;
   line-height: 45px;
   font-size: 18px;
-}
+}*/
 #checkoutModal form ::-webkit-input-placeholder {
   font-size: 14px !important;
 }

@@ -177,7 +177,7 @@
 
                   <form action="#" method="post" name="quick-contact" id="quick-contact">
 
-                    <div class="alert alert-danger hidden" id="car-select-form-msg">
+                    <div class="alert alert-danger hidden" id="quick-contact-form-msg">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                       <strong>Увага:</strong> Всі поля є обов'язковими!
                     </div>
@@ -829,23 +829,23 @@
                   <div class="alert hidden" id="contact-form-msg"></div>
 
                   <div class="form-group">
-                    <input type="text" class="form-control text-field" name="first-name" placeholder="Ваше ім'я:">
+                    <input type="text" class="form-control text-field" name="first-name" id="first-name" placeholder="Ваше ім'я:">
                     
                     <div class="clearfix"></div>
                   </div>
 
                   <div class="form-group">
-                    <input type="tel" class="form-control telephone text-field" name="phone-number" placeholder="Телефон:">
+                    <input type="tel" class="form-control telephone text-field" name="phone-number" id="phone-number" placeholder="Телефон:">
                   </div>
 
                   <div class="form-group">
-                    <input type="email" class="form-control email text-field" name="guest-email" placeholder="Email:">
+                    <input type="email" class="form-control email text-field" name="guest-email" id="guest-email" placeholder="Email:">
                   </div>
 
                   <div class="form-group">
                     <textarea class="form-control message" name="message" placeholder="Повідомлення:"></textarea>
                   </div>
-                  	<input type="hidden" name="point-where" value="Форма3">
+                  	<input type="hidden" name="point-where" id="point-where" value="Форма3">
                     <input type="submit" class="btn submit-message" name="submit-message" value="Відправити">
                   
 
@@ -903,6 +903,7 @@
                       <h3><i class="fa fa-info-circle"></i> Інформація про клієнта::</h3>
                       <p>У цій формі вказано інформацію, яка буде відправлена нашому менеджеру.</p>
                     </div>
+                    <div class="alert hidden" id="checkout-form-msg"></div>
                     <!-- Checkout Info end -->
                     
                     <!-- Checkout Rental Info start -->
@@ -910,31 +911,25 @@
                       <div class="location-date-info">
                         <h3>Інформація про вас</h3>
 
-                        <div class="info-box">
-                          <span class="glyphicon glyphicon-user"></span>
-                          <h4 class="info-box-title">Ваше ім'я</h4>
-                          <p class="info-box-description" id="first-name-ph"></p>
-                          <input type="text" name="pick-up" id="first-name" value="">
+                        <div class="form-group">
+                          <label class="control-label"><span class="glyphicon glyphicon-user"></span> Ваше ім'я </label>
+                          <input type="text" name="first-name" class="form-control" id="first-name" value="">
                         </div>
 
-                        <div class="info-box">
-                          <span class="glyphicon glyphicon-earphone"></span>
-                          <h4 class="info-box-title">Номер телефону</h4>
-                          <p class="info-box-description" id="phone-number-ph"></p>
-                          <input type="text" name="drop-off" id="phone-number" value="">
+                        <div class="form-group">
+                          <label class="control-label"><span class="glyphicon glyphicon-earphone"></span> Номер телефону </label>
+                          <input type="text" name="phone-number" class="form-control" id="phone-number" value="">
                         </div>
 
-                        <div class="info-box">
-                          <span class="glyphicon glyphicon-envelope"></span>
-                          <h4 class="info-box-title">Е - пошта</h4>
-                          <p class="info-box-description" id="guest-email-ph"></p>
-                          <input type="text" name="pickup-location" id="guest-email" value="">
+                        <div class="form-group">                                                                              
+                          <label class="control-label"><span class="glyphicon glyphicon-envelope"></span> Е - пошта </label>
+                          <input type="text" name="guest-email" class="form-control" id="guest-email" value="">
                         </div>
                       </div>
 
                       <div class="vehicle-info">
                         <h5>Обраний продукт: <span id="selected-product-ph"></span></h5> <a href="#vehicles" class="scroll-to">[ Переглянути продукти ]</a>
-                        <input type="hidden" name="selected-product" id="selected-product" value="">
+                        <input type="hidden" name="selected-product" id="message" value="">
                         <div class="clearfix"></div>
                         <div class="vehicle-image">
                           <img class="img-responsive" id="selected-vehicle-image" src="img/vehicle1.jpg" alt="Vehicle">
