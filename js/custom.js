@@ -243,8 +243,22 @@ $( "#newsletter-form" ).submit(function() {
   $('#newsletter-form-msg').addClass('hidden');
   $('#newsletter-form-msg').removeClass('alert-success');
   $('#newsletter-form-msg').removeClass('alert-danger');
+  $("#newsletter-form #first-name").parent().removeClass('has-error')
+  $("#newsletter-form #first-name").parent().removeClass('has-error')
+  $("#newsletter-form #point-where").val('Форма2')
+    var error=0;
+    if (validateNotEmpty($("#newsletter-form #first-name").val())) {
+        error=1
+        $("#newsletter-form #first-name").parent().addClass('has-error')
+        
+    };
+    if (validateNotEmpty($("#newsletter-form #phone-number").val())) {
+        error=1
+        $("#newsletter-form #phone-number").parent().addClass('has-error')
+    };
 
-  // $('#newsletter-form input[type=submit]').attr('disabled', 'disabled');
+
+  if (error==0) {
   console.log($("#newsletter-form").serialize())
   $.ajax({
     type: "POST",
@@ -256,21 +270,39 @@ $( "#newsletter-form" ).submit(function() {
       if('success' == data.result)
       {
         $('#newsletter-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
-        $('#newsletter-form-msg').html(data.msg[0]);
+        $('#newsletter-form-msg').html("Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
         $('#newsletter-form input[type=submit]').removeAttr('disabled');
-        $('#newsletter-form')[0].reset();
+        
+        setTimeout(function(){
+          $('#newsletter-form-msg').addClass('hidden');
+          $('#newsletter-form-msg').removeClass('alert-success');
+          $('#newsletter-form')[0].reset();
+          
+        }, 5000);        
       }
 
       if('error' == data.result)
       {
         $('#newsletter-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#newsletter-form-msg').html(data.msg[0]);
+        $('#newsletter-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
         $('#newsletter-form input[type=submit]').removeAttr('disabled');
       }
 
+    },
+    error:function(data){
+        $('#newsletter-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+        $('#newsletter-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#newsletter-form input[type=submit]').removeAttr('disabled');
     }
   });
 
+  } else{
+
+    $('#newsletter-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+    $('#newsletter-form-msg').html("Ви не заповнили усі поля");
+    $('#quick-form input[type=submit]').removeAttr('disabled');
+
+  };
   return false;
 });
 
@@ -286,7 +318,20 @@ $( "#contact-form" ).submit(function() {
   $('#contact-form-msg').removeClass('alert-danger');
 
   $('#contact-form input[type=submit]').attr('disabled', 'disabled');
+  $("#contact-form #point-where").val('Форма3')
+    var error=0;
+    if (validateNotEmpty($("#contact-form #first-name").val())) {
+        error=1
+        $("#contact-form #first-name").parent().addClass('has-error')
+        
+    };
+    if (validateNotEmpty($("#contact-form #phone-number").val())) {
+        error=1
+        $("#contact-form #phone-number").parent().addClass('has-error')
+    };
 
+
+    if (error==0) {
   $.ajax({
     type: "POST",
     url: "php/full-contact.php",
@@ -297,24 +342,117 @@ $( "#contact-form" ).submit(function() {
       if('success' == data.result)
       {
         $('#contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
-        $('#contact-form-msg').html(data.msg[0]);
+        $('#contact-form-msg').html("Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
         $('#contact-form input[type=submit]').removeAttr('disabled');
         $('#contact-form')[0].reset();
+        setTimeout(function(){
+          $('#contact-form-msg').addClass('hidden');
+          $('#contact-form-msg').removeClass('alert-success');
+          $('#contact-form')[0].reset();
+          
+        }, 5000);         
       }
 
       if('error' == data.result)
       {
         $('#contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#contact-form-msg').html(data.msg[0]);
+        $('#contact-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
         $('#contact-form input[type=submit]').removeAttr('disabled');
       }
 
+    },
+    error:function(data){
+        $('#contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+        $('#contact-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#contact-form input[type=submit]').removeAttr('disabled');
     }
   });
 
+
+
+
+  } else{
+        $('#contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+        $('#contact-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#contact-form input[type=submit]').removeAttr('disabled');
+  };
   return false;
 });
 
+
+
+
+
+// Check Out Form
+//-------------------------------------------------------------------------------
+
+$( "#checkout-form" ).submit(function() {
+
+  $('#checkout-form-msg').addClass('hidden');
+  $('#checkout-form-msg').removeClass('alert-success');
+  $('#checkout-form-msg').removeClass('alert-danger');
+
+  $('#checkout-form button[type=submit]').attr('disabled', 'disabled');
+  $("#checkout-form #point-where").val('Форма4')
+    var error=0;
+    if (validateNotEmpty($("#checkout-form #first-name").val())) {
+        error=1
+        $("#checkout-form #first-name").parent().addClass('has-error')
+        
+    };
+    if (validateNotEmpty($("#checkout-form #phone-number").val())) {
+        error=1
+        $("#checkout-form #phone-number").parent().addClass('has-error')
+    };
+    if (error==0) {
+  $.ajax({
+    type: "POST",
+    url: "php/full-contact.php",
+    data: $("#checkout-form").serialize(),
+    dataType: "json",
+    success: function(data) {
+
+      if('success' == data.result)
+      {
+        $('#checkout-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
+        $('#checkout-form-msg').html("Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
+        $('#checkout-form input[type=submit]').removeAttr('disabled');
+
+        setTimeout(function(){
+          $('.modal').modal('hide');
+          $('#checkout-form-msg').addClass('hidden');
+          $('#checkout-form-msg').removeClass('alert-success');
+
+          $('#checkout-form')[0].reset();
+
+        }, 5000);
+
+      }
+
+      if('error' == data.result)
+      {
+        $('#checkout-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+        $('#checkout-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#checkout-form input[type=submit]').removeAttr('disabled');
+      }
+
+    },
+    error:function(data){
+        $('#checkout-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+        $('#checkout-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#checkout-form input[type=submit]').removeAttr('disabled');
+    }
+  });
+
+
+    } else{
+        $('#checkout-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+        $('#checkout-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#checkout-form input[type=submit]').removeAttr('disabled');        
+    };
+
+return false;
+});
 
 
 
@@ -393,55 +531,6 @@ $( "#car-select-form" ).submit(function() {
   return false;
 });
 
-
-
-// Check Out Form
-//-------------------------------------------------------------------------------
-
-$( "#checkout-form" ).submit(function() {
-
-  $('#checkout-form-msg').addClass('hidden');
-  $('#checkout-form-msg').removeClass('alert-success');
-  $('#checkout-form-msg').removeClass('alert-danger');
-
-  $('#checkout-form button[type=submit]').attr('disabled', 'disabled');
-
-  $.ajax({
-    type: "POST",
-    url: "php/full-contact.php",
-    data: $("#checkout-form").serialize(),
-    dataType: "json",
-    success: function(data) {
-
-      if('success' == data.result)
-      {
-        $('#checkout-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
-        $('#checkout-form-msg').html(data.msg[0]);
-        $('#checkout-form input[type=submit]').removeAttr('disabled');
-
-        setTimeout(function(){
-          $('.modal').modal('hide');
-          $('#checkout-form-msg').addClass('hidden');
-          $('#checkout-form-msg').removeClass('alert-success');
-
-          $('#checkout-form')[0].reset();
-          $('#car-select-form')[0].reset();
-        }, 5000);
-
-      }
-
-      if('error' == data.result)
-      {
-        $('#checkout-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#checkout-form-msg').html(data.msg[0]);
-        $('#checkout-form input[type=submit]').removeAttr('disabled');
-      }
-
-    }
-  });
-
-return false;
-});
 
 
 
