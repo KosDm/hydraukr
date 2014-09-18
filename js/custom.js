@@ -4,7 +4,7 @@
 // Config 
 //-------------------------------------------------------------
 
-var companyName = "Car Rental Station"; // Enter your event title
+var companyName = "HydraTech"; // Enter your event title
 var product_id='';
 
 // Initialize Tooltip  
@@ -17,7 +17,9 @@ $('.my-tooltip').tooltip();
 // Initialize jQuery Placeholder  
 //-------------------------------------------------------------
 
+
 $('input, textarea').placeholder();
+
 
 
 
@@ -81,11 +83,7 @@ $(".vehicle-data-select").change(function(){
 
 
 
-// Initialize Datepicker
-//-------------------------------------------------------------------------------
-$('.datepicker').datepicker().on('changeDate', function(){
-  $(this).datepicker('hide');
-});
+
 
 
 
@@ -122,57 +120,6 @@ $('.scrollup, .navbar-brand').click(function(){
 
 
 
-// Location Map Function
-//-------------------------------------------------------------------------------
-
-function loadMap(addressData){
-
-  var path = document.URL;
-
-  var locationContent = "<h2>"+companyName+"</h2>"
-  + "<p>"+addressData+"</p>";
-
-  $('#locations .map').gmap3({
-    map: {
-      options: {
-        maxZoom: 15,
-        scrollwheel: false,
-      }  
-    },
-    infowindow:{
-     address: addressData,
-     options:{
-       content: locationContent
-     }
-   },
-   marker:{
-    address: addressData,
-    options: {
-      icon: new google.maps.MarkerImage(
-        path+"img/mapmarker.png",
-        new google.maps.Size(59, 58, "px", "px"), 
-        new google.maps.Point(0, 0),    //sets the origin point of the icon
-        new google.maps.Point(29, 34)   //sets the anchor point for the icon
-        )
-    }
-  }
-},
-"autofit" );
-}
-
-loadMap(locations[0].value);
-
-$("#location-map-select").append('<option value="'+locations[0].value+'">Please select a location</option>');  
-$.each(locations, function( index, value ) {
-  var option = '<option value="'+value.value+'">'+value.value+'</option>';
-  $("#location-map-select").append(option);
-});
-
-$('#location-map-select').on('change', function() {
-  $('#locations .map').gmap3('destroy');
-  loadMap(this.value);
-});
-
 
 
 // Scroll To Animation
@@ -197,12 +144,7 @@ scrollTo.click( function(event) {
 
 
 
-// setup autocomplete - pulling from locations-autocomplete.js
-//-------------------------------------------------------------------------------
 
-$('.autocomplete-location').autocomplete({
-  lookup: locations
-});
 
 
 
@@ -215,11 +157,11 @@ $( "#newsletter-form" ).submit(function() {
   $('#newsletter-form-msg').removeClass('alert-success');
   $('#newsletter-form-msg').removeClass('alert-danger');
 
-  $('#newsletter-form input[type=submit]').attr('disabled', 'disabled');
-
+  // $('#newsletter-form input[type=submit]').attr('disabled', 'disabled');
+  console.log($("#newsletter-form").serialize())
   $.ajax({
     type: "POST",
-    url: "php/newsletter.php",
+    url: "php/newsdletter.php",
     data: $("#newsletter-form").serialize(),
     dataType: "json",
     success: function(data) {

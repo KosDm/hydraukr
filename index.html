@@ -182,19 +182,19 @@
                     <!-- Guest name -->
                     <div class="form-group left">
                         <label for="first-name"><h3>Ваше ім'я:</h3></label>
-                        <input type="text" class="form-control" name="first-name" id="first-name" placeholder="Василь Володимирович">
+                        <input type="text" class="form-control holder" name="first-name" id="first-name" placeholder="Василь Володимирович">
 	                </div>
 	                <!-- Guest name end-->
 
 	                <!-- Guest phone number -->
 	                <div class="form-group left">
                         <label for="phone-number"><h3>Номер телефону:</h3></label>
-                        <input type="text" class="form-control" name="phone-number" id="phone-number" placeholder="067 1234567">
+                        <input type="text" class="form-control holder" name="phone-number" id="phone-number" placeholder="067 1234567">
 	                </div>
 	                <!-- Guest phone number end -->
 
-
-                    <input type="submit" class="submit" name="submit" value="Підтвердити" id="checkoutModalLabel">
+	                <input type="hidden" name="point-where" value="Форма1">
+                    <input type="submit" class="submit" name="submit" value="Записатись" id="checkoutModalLabel">
                   </form>
 
 
@@ -274,28 +274,27 @@
             <div class="row">
               <div class="col-md-12"><div class="alert hidden" id="newsletter-form-msg"></div></div>
               <div class="col-md-5 col-xs-12">
-                <h2 class="title">Підпишіться на отримання новин
-                  <span class="subtitle">ексклюзивний доступ до пропозицій та акцій</span></h2>
+                <h2 class="title">Записатись на дзвінок
+                  <span class="subtitle">наш менеджер зв'яжеться з вами</span></h2>
                 </div>
                 <div class="col-md-7">
                   <div class="newsletter-form pull-left">
                     <form action="#" method="post" name="newsletter-form" id="newsletter-form">
                       <div class="input-group">
-                      	<input type="fname" name="newsletter-fname" class="form-control" placeholder="Введіть вашe ім'я">
-                        <input type="phone" name="newsletter-phone" class="form-control" placeholder="№телефону">
+                      <span class="input-group-btn">
+                      	<input type="fname" name="first-name" class="form-control" placeholder="Введіть вашe ім'я">
+                      	</span>
+                      	<span class="input-group-btn">
+                        <input type="phone" name="phone-number" class="form-control" placeholder="№телефону">
+                        </span>
+	                      <input type="hidden" name="point-where" value="Форма2">
                         <span class="input-group-btn">
                           <input class="btn btn-default button" type="submit" value="надіслати">
                         </span>
                       </div>
                     </form>
                   </div>
-                  <div class="social-icons pull-right">
-                    <ul>
-                      <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a class="googleplus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                      <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                    </ul>
-                  </div>
+
                   <div class="clearfix"></div>
                 </div>
               </div>
@@ -367,7 +366,7 @@
                       <td>HT 00012</td>
                     </tr>
                   </table>
-                  <button class="reserve-button" data-product="1"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
+                  <button class="reserve-button" data-product="1"> Подати заявку</button>
                 </div>
               </div>
               <!-- Vehicle 1 data end -->
@@ -408,7 +407,7 @@
                       <td>HT 00013</td>
                     </tr>
                   </table>
-                  <button class="reserve-button" data-product="2"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
+                  <button class="reserve-button" data-product="2"> Подати заявку</button>
                 </div>
               </div>
               <!-- Vehicle 2 data end -->
@@ -449,7 +448,7 @@
                       <td>HT 00034</td>
                     </tr>
                   </table>
-                  <button class="reserve-button" data-product="3"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
+                  <button class="reserve-button" data-product="3"> Подати заявку</button>
                 </div>
               </div>
               <!-- Vehicle 3 data end -->
@@ -485,7 +484,7 @@
                       <td>HT 00005</td>
                     </tr>                    
                   </table>
-                  <button class="reserve-button" data-product="4"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
+                  <button class="reserve-button" data-product="4"> Подати заявку</button>
                 </div>
               </div>
               <!-- Vehicle 4 data end -->
@@ -517,7 +516,7 @@
                       <td>HT 00004</td>
                     </tr>                    
                   </table>
-                  <button class="reserve-button" data-product="5"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
+                  <button class="reserve-button" data-product="5"> Подати заявку</button>
                 </div>
               </div>
               <!-- Vehicle 5 data end -->
@@ -549,7 +548,7 @@
                       <td>HT 00025</td>
                     </tr>                    
                   </table>
-                  <button class="reserve-button" data-product="6"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
+                  <button class="reserve-button" data-product="6"> Подати заявку</button>
                 </div>
               </div>
               <!-- Vehicle 6 data end -->
@@ -581,7 +580,7 @@
                       <td>HT 00003</td>
                     </tr>                    
                   </table>
-                  <button class="reserve-button" data-product="7"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
+                  <button class="reserve-button" data-product="7"> Подати заявку</button>
                 </div>
               </div>
               <!-- Vehicle 7 data end -->
@@ -617,7 +616,7 @@
                       <td>HT 00014</td>
                     </tr>                    
                   </table>
-                  <button class="reserve-button" data-product="8"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
+                  <button class="reserve-button" data-product="8"> Подати заявку</button>
                 </div>
               </div>
               <!-- Vehicle 8 data end -->
@@ -657,7 +656,7 @@
                       <td>Обмежувач підйому кузова</td>
                     </tr>         
                   </table>
-                  <button class="reserve-button" data-product="9"><span class="glyphicon glyphicon-calendar"></span> Reserve now</button>
+                  <button class="reserve-button" data-product="9"> Подати заявку</button>
                 </div>
               </div>
               <!-- Vehicle 9 data end -->
@@ -747,7 +746,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <h2 class="title">Watch our info tour</h2>
+              <h2 class="title">Перегляньте наш відеотур</h2>
               <h3 class="subtitle">You can also show youtube videos in this section!</h3>
               <p>Here is some dummy text. Lorem ipsum dolor sit amet, <span class="label label-default">This is an labeled text snippet!</span>, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, vero voluptas delectus explicabo maxime ad qui incidunt! no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
@@ -765,7 +764,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12 text-center">
-                <h2>Meet Our Partners</h2>
+                <h2>Зустрічайте - наші партнери</h2>
                 <span class="underline">&nbsp;</span>
                 <p>To contribute to positive change and achieve our sustainability goals, we partner with many extraordinary organizations around the world. Their expertise enables us to do far more than we could alone, and their passion and talent inspire us. It is our pleasure to introduce you to a handful of the organizations whose accomplishments and commitments are representative of all the organizations we are fortunate to call our partners.</p>
               </div>
@@ -792,14 +791,14 @@
         <section id="contact" class="container wow bounceInUp" data-wow-offset="50">
           <div class="row">
             <div class="col-md-12">
-              <h2>Contact Us</h2>
+              <h2>Зворотній зв'язок</h2>
             </div>
             <div class="col-md-4 col-xs-12 pull-right">
-              <h4 class="contact-box-title">Customer Center</h4>
+              <h4 class="contact-box-title">Менеджер</h4>
               <div class="contact-box">
                 <img src="img/contact-box-img1.jpg" alt="contact-img">
                 <div class="contact-box-name">Sarah Connor</div>
-                <div class="contact-box-phon"><span class="highlight">Phone:</span> 666-999-888</div>
+                <div class="contact-box-phon"><span class="highlight">Телефон:</span> +38 (067) 353-23-03</div>
                 <div class="contact-box-email"><span class="highlight">Email:</span> connor@example.com</div>
                 <div class="clearfix"></div>
               </div>
@@ -809,31 +808,31 @@
               
             </div>
             <div class="col-md-8 col-xs-12 pull-left">
-              <p class="contact-info">You have any questions or need additional information? <br>
-                <span class="address"><span class="highlight">Address:</span>  Car|Rental / 3861 Sepulveda Blvd. / Culver City, CA 90230</span></p>
+              <p class="contact-info">У Вас виникли запитання або бажаєте дізнатись більше? <br>
+                <span class="address"><span class="highlight">Адреса:</span>  Україна, м. Тернопіль</span></p>
                 <form action="#" method="post" id="contact-form" name="contact-form">
 
                   <div class="alert hidden" id="contact-form-msg"></div>
 
                   <div class="form-group">
-                    <input type="text" class="form-control first-name text-field" name="first-name" placeholder="First Name:">
-                    <input type="text" class="form-control last-name text-field" name="last-name" placeholder="Last Name:">
+                    <input type="text" class="form-control first-name text-field" name="first-name" placeholder="Ваше ім'я:">
+                    
                     <div class="clearfix"></div>
                   </div>
 
                   <div class="form-group">
-                    <input type="tel" class="form-control telephone text-field" name="telephone" placeholder="Telephone:">
+                    <input type="tel" class="form-control telephone text-field" name="phone-number" placeholder="Телефон:">
                   </div>
 
                   <div class="form-group">
-                    <input type="email" class="form-control email text-field" name="email" placeholder="Email:">
+                    <input type="email" class="form-control email text-field" name="guest-email" placeholder="Email:">
                   </div>
 
                   <div class="form-group">
-                    <textarea class="form-control message" name="message" placeholder="Message:"></textarea>
+                    <textarea class="form-control message" name="message" placeholder="Повідомлення:"></textarea>
                   </div>
-                  
-                    <input type="submit" class="btn submit-message" name="submit-message" value="Submit Message">
+                  	<input type="hidden" name="point-where" value="Форма3">
+                    <input type="submit" class="btn submit-message" name="submit-message" value="Відправити">
                   
 
                 </form>
@@ -844,7 +843,7 @@
           <!-- Contact end -->
 
           
-          <a href="#" class="scrollup">ScrollUp</a>
+          <a href="#" class="scrollup">Вгору</a>
           
 
           <!-- Footer start -->
@@ -853,15 +852,14 @@
               <div class="row">
                 <div class="col-md-12 text-center">
                   <ul class="footer-nav">
-                    <li><a class="scroll-to" href="#top">Home</a></li>
-                    <li><a class="scroll-to" href="#services">Service</a></li>
-                    <li><a class="scroll-to" href="#vehicles">Vehicle Models</a></li>
-                    <li><a class="scroll-to" href="#reviews">Reviews</a></li>
-                    <li><a class="scroll-to" href="#locations">Locations</a></li>
-                    <li><a class="scroll-to" href="#contact">Contact</a></li>
+                    <li><a class="scroll-to" href="#top">Початкова</a></li>
+                    <li><a class="scroll-to" href="#services">Переваги</a></li>
+                    <li><a class="scroll-to" href="#vehicles">Продукція</a></li>
+                    <li><a class="scroll-to" href="#reviews">Відгуки</a></li>
+                    <li><a class="scroll-to" href="#contact">Контакти</a></li>
                   </ul>
                   <div class="clearfix"></div>
-                  <p class="copyright">©2014 Themeinjection, All Rights Reserved</p>
+                  <p class="copyright">©2014 Kitgroup, All Rights Reserved</p>
                 </div>
               </div>
             </div>
@@ -902,21 +900,21 @@
                           <span class="glyphicon glyphicon-user"></span>
                           <h4 class="info-box-title">Ваше ім'я</h4>
                           <p class="info-box-description" id="first-name-ph"></p>
-                          <input type="text" name="pick-up" id="first-name-fo" value="">
+                          <input type="text" name="pick-up" id="first-name" value="">
                         </div>
 
                         <div class="info-box">
                           <span class="glyphicon glyphicon-earphone"></span>
                           <h4 class="info-box-title">Номер телефону</h4>
                           <p class="info-box-description" id="phone-number-ph"></p>
-                          <input type="text" name="drop-off" id="phone-number-fo" value="">
+                          <input type="text" name="drop-off" id="phone-number" value="">
                         </div>
 
                         <div class="info-box">
                           <span class="glyphicon glyphicon-envelope"></span>
                           <h4 class="info-box-title">Е - пошта</h4>
                           <p class="info-box-description" id="guest-email-ph"></p>
-                          <input type="text" name="pickup-location" id="guest-email-fo" value="">
+                          <input type="text" name="pickup-location" id="guest-email" value="">
                         </div>
                       </div>
 
@@ -933,7 +931,7 @@
 
                     </div>
                     <!-- Checkout Rental Info end -->
-
+                    <input type="hidden" name="point-where" value="Форма4">
 
                 </div>
                 <!-- Modal body end -->
@@ -962,10 +960,10 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.autocomplete.min.js"></script>
         <script src="js/jquery.placeholder.js"></script>
-        <script src="js/locations-autocomplete.js"></script>
+        <!-- <script src="js/locations-autocomplete.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-        <script src="js/gmap3.min.js"></script>
+        <script src="js/gmap3.min.js"></script> -->
 
         <!--[if !(gte IE 8)]><!-->
             <script src="js/wow.min.js"></script>

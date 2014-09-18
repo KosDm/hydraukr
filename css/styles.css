@@ -11,8 +11,15 @@ body {
 
 
 
-#teaser form .form-control input.red { border:solid 1px #f00; }
 
+:focus::-webkit-input-placeholder { color:transparent; }
+:focus::-moz-placeholder { color:transparent; }
+:focus::placeholder { color:transparent; }
+:focus:placeholder { color:transparent; }
+
+
+
+div.input-group>span.input-group-btn {width: 40%;}
 
 
 /* Animation Delay
@@ -526,7 +533,7 @@ header.large .brand {
   margin-top: 6px;
 }
 #newsletter .newsletter-form {
-  width: 62%;
+  width: 100%;
   background-color: #fff;
   height: 55px;
   padding: 9px;
