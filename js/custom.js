@@ -161,7 +161,7 @@ $( "#newsletter-form" ).submit(function() {
   console.log($("#newsletter-form").serialize())
   $.ajax({
     type: "POST",
-    url: "php/newsdletter.php",
+    url: "php/quick-contact.php",
     data: $("#newsletter-form").serialize(),
     dataType: "json",
     success: function(data) {
@@ -202,7 +202,7 @@ $( "#contact-form" ).submit(function() {
 
   $.ajax({
     type: "POST",
-    url: "php/contact.php",
+    url: "php/quick-contact.php",
     data: $("#contact-form").serialize(),
     dataType: "json",
     success: function(data) {
@@ -230,6 +230,50 @@ $( "#contact-form" ).submit(function() {
 
 
 
+
+
+
+
+// Quick contact
+//-------------------------------------------------------------------------------
+
+$( "#quick-contact" ).submit(function() {
+
+  $('#quick-contact-form-msg').addClass('hidden');
+  $('#quick-contact-form-msg').removeClass('alert-success');
+  $('#quick-contact-form-msg').removeClass('alert-danger');
+
+  $('#quick-contact-form input[type=submit]').attr('disabled', 'disabled');
+
+  $.ajax({
+    type: "POST",
+    url: "php/quick-contact.php",
+    data: $("#quick-contact").serialize(),
+    dataType: "json",
+    success: function(data) {
+
+      if('success' == data.result)
+      {
+        $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
+        $('#quick-contact-form-msg').html(data.msg[0]);
+        $('#quick-contact-form input[type=submit]').removeAttr('disabled');
+        $('#quick-contact-form')[0].reset();
+      }
+
+      if('error' == data.result)
+      {
+        $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+        $('#quick-contact-form-msg').html(data.msg[0]);
+        $('#quick-contact-form input[type=submit]').removeAttr('disabled');
+      }
+
+    }
+  });
+
+  return false;
+});
+
+
 // Hydra Select Form
 //-------------------------------------------------------------------------------
 $(".reserve-button").click(function () {
@@ -249,12 +293,12 @@ $(".reserve-button").click(function () {
   
 })
 
-$( "#quick-contact" ).submit(function() {
+// $( "#quick-contact" ).submit(function() {
 
-    alert("Записано")
+//     alert("Записано")
 
-    }
-)
+//     }
+// )
 
 
 
