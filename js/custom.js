@@ -148,6 +148,95 @@ scrollTo.click( function(event) {
 
 
 
+
+// Quick contact
+//-------------------------------------------------------------------------------
+
+$( "#quick-contact" ).submit(function() {
+  $('#quick-contact-form-msg').addClass('hidden');
+  $('#quick-contact-form-msg').removeClass('alert-success');
+  $('#quick-contact-form-msg').removeClass('alert-danger');
+  $("#quick-contact #first-name").parent().removeClass('has-error')
+  $("#quick-contact #first-name").parent().removeClass('has-error')
+  $("#quick-contact #point-where").val('Форма1')
+    var error=0;
+    if (validateNotEmpty($("#quick-contact #first-name").val())) {
+        error=1
+        $("#quick-contact #first-name").parent().addClass('has-error')
+        
+    };
+    if (validateNotEmpty($("#quick-contact #phone-number").val())) {
+        error=1
+        $("#quick-contact #phone-number").parent().addClass('has-error')
+    };
+
+
+if (error==0) {
+
+
+  $('#quick-contact-form input[type=submit]').attr('disabled', 'disabled');
+
+  $.ajax({
+    type: "POST",
+    url: "php/quick-contact.php",
+    data: $("#quick-contact").serialize(),
+    dataType: "json",
+    success: function(data) {
+        console.log('SUCCESS#result=' + data.result + '|||' + data.msg[0])
+      if('success' == data.result)
+      {
+        $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
+        $('#quick-contact-form-msg').html(data.msg[0]);
+        $('#quick-contact-form input[type=submit]').removeAttr('disabled');
+        $('#quick-contact')[0].reset();
+      }
+
+      if('error' == data.result)
+      {
+        $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+        $('#quick-contact-form-msg').html(data.msg[0]);
+        $('#quick-contact-form input[type=submit]').removeAttr('disabled');
+      }
+
+    },
+    complete:function(data){
+        console.log('COMPLETE#result=' + data.result + '|||' + data.msg[0])
+    }
+  });
+
+
+        $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
+        $('#quick-contact-form-msg').html("Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
+        $('#quick-contact-form-msg input[type=submit]').removeAttr('disabled');
+
+        setTimeout(function(){
+         
+          $('#quick-contact-form-msg').addClass('hidden');
+          $('#quick-contact-form-msg').removeClass('alert-success');
+
+          $('#quick-contact')[0].reset();
+          
+        }, 5000);
+
+
+
+
+}else{
+    $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+    $('#quick-contact-form-msg').html("Ви не заповнили усі поля");
+    $('#quick-contact-form input[type=submit]').removeAttr('disabled');
+}//valid data
+
+
+
+  return false;
+});
+
+
+
+
+
+
 // Newsletter Form
 //-------------------------------------------------------------------------------
 
@@ -165,7 +254,7 @@ $( "#newsletter-form" ).submit(function() {
     data: $("#newsletter-form").serialize(),
     dataType: "json",
     success: function(data) {
-
+        console.log("result of operation is= " + data.result);
       if('success' == data.result)
       {
         $('#newsletter-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
@@ -202,7 +291,7 @@ $( "#contact-form" ).submit(function() {
 
   $.ajax({
     type: "POST",
-    url: "php/quick-contact.php",
+    url: "php/full-contact.php",
     data: $("#contact-form").serialize(),
     dataType: "json",
     success: function(data) {
@@ -234,71 +323,24 @@ $( "#contact-form" ).submit(function() {
 
 
 
-// Quick contact
-//-------------------------------------------------------------------------------
-
-$( "#quick-contact" ).submit(function() {
-
-  $('#quick-contact-form-msg').addClass('hidden');
-  $('#quick-contact-form-msg').removeClass('alert-success');
-  $('#quick-contact-form-msg').removeClass('alert-danger');
-
-  $('#quick-contact-form input[type=submit]').attr('disabled', 'disabled');
-
-  $.ajax({
-    type: "POST",
-    url: "php/quick-contact.php",
-    data: $("#quick-contact").serialize(),
-    dataType: "json",
-    success: function(data) {
-
-      if('success' == data.result)
-      {
-        $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
-        $('#quick-contact-form-msg').html(data.msg[0]);
-        $('#quick-contact-form input[type=submit]').removeAttr('disabled');
-        $('#quick-contact-form')[0].reset();
-      }
-
-      if('error' == data.result)
-      {
-        $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#quick-contact-form-msg').html(data.msg[0]);
-        $('#quick-contact-form input[type=submit]').removeAttr('disabled');
-      }
-
-    }
-  });
-
-  return false;
-});
 
 
 // Hydra Select Form
 //-------------------------------------------------------------------------------
 $(".reserve-button").click(function () {
   product_id=$(this).data("product");
-  console.log($(this).data("product"))
-  console.log($('a[href="#vehicle-'+product_id+'"]').html())
   
-
   var selectedProduct=$('a[href="#vehicle-'+product_id+'"]').html()
   var selectImage="img/vehicle" + product_id + ".jpg"
 
   $("#selected-product-ph").html(selectedProduct);
-  $("#selected-product").val(selectedProduct);
+  $("#message").val(selectedProduct);
   $('#selected-vehicle-image').attr('src',selectImage)
   $('#checkoutModal').modal();
 
   
 })
 
-// $( "#quick-contact" ).submit(function() {
-
-//     alert("Записано")
-
-//     }
-// )
 
 
 
@@ -364,11 +406,11 @@ $( "#checkout-form" ).submit(function() {
   $('#checkout-form-msg').removeClass('alert-success');
   $('#checkout-form-msg').removeClass('alert-danger');
 
-  $('#checkout-form input[type=submit]').attr('disabled', 'disabled');
+  $('#checkout-form button[type=submit]').attr('disabled', 'disabled');
 
   $.ajax({
     type: "POST",
-    url: "php/inquiry.php",
+    url: "php/full-contact.php",
     data: $("#checkout-form").serialize(),
     dataType: "json",
     success: function(data) {

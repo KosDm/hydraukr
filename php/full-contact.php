@@ -12,9 +12,12 @@ include_once('mail-config.php');
 $isValid = GUMP::is_valid($_POST, array(
 	'first-name' => 'required',
 	'phone-number' => 'required',
+	'guest-email' => 'required',
+	'message' => 'required',
 	'point-where' => 'required'	
 	));
 
+echo $_POST."<br/><br/><br/>validation=".$isValid;
 if($isValid === true) {
 
 	// Submit Mail
@@ -31,20 +34,18 @@ if($isValid === true) {
 
 	$result = array(
 		'result' => 'success', 
-		'msg' => array("Success! Your contact request has been send.")
+		'msg' => array('Success! Your contact request has been send.')
 		);
 
 	echo json_encode($result);
-	return json_encode($result);
 
 } else {
 	$result = array(
 		'result' => 'error', 
-		'msg' => array($isValid)
+		'msg' => $isValid
 		);
 
 	echo json_encode($result);
-	return json_encode($result);
 }
 
 
@@ -53,6 +54,8 @@ function createMessage($formData)
 	$body  = 	"У вас новий клієнт : <br><br>";
 	$body .=	"Ім'я:  ".htmlspecialchars($formData['first-name'])." <br><br>";
 	$body .=	"Телефон:  ".htmlspecialchars($formData['phone-number'])." <br><br>";
+	$body .=	"Пошта:  ".htmlspecialchars($formData['guest-email'])." <br><br>";
+	$body .=	"Повідомлення:  ".htmlspecialchars($formData['message'])." <br><br>";
 	$body .=	"Звідки прийшов:  ".htmlspecialchars($formData['point-where'])." <br><br>";
 	
 

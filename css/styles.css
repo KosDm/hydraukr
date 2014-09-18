@@ -317,7 +317,7 @@ header.large .brand {
 }
 #teaser form .form-control {
   height: 43px;
-  border: 2px solid #efe9e9;
+  /*border: 2px solid #efe9e9;*/
   box-shadow: none;
 }
 #teaser form .input-group {
