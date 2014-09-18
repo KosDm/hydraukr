@@ -182,41 +182,39 @@ if (error==0) {
     data: $("#quick-contact").serialize(),
     dataType: "json",
     success: function(data) {
-        console.log('SUCCESS#result=' + data.result + '|||' + data.msg[0])
+        
       if('success' == data.result)
       {
         $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
-        $('#quick-contact-form-msg').html(data.msg[0]);
+        $('#quick-contact-form-msg').html("Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
         $('#quick-contact-form input[type=submit]').removeAttr('disabled');
-        $('#quick-contact')[0].reset();
+        setTimeout(function(){
+          $('#quick-contact-form-msg').addClass('hidden');
+          $('#quick-contact-form-msg').removeClass('alert-success');
+          $('#quick-contact')[0].reset();
+          
+        }, 5000);
       }
 
       if('error' == data.result)
       {
         $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#quick-contact-form-msg').html(data.msg[0]);
+        $('#quick-contact-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
         $('#quick-contact-form input[type=submit]').removeAttr('disabled');
+
       }
 
     },
-    complete:function(data){
-        console.log('COMPLETE#result=' + data.result + '|||' + data.msg[0])
+    error:function(data){
+        $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
+        $('#quick-contact-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#quick-contact-form input[type=submit]').removeAttr('disabled');
     }
   });
 
 
-        $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
-        $('#quick-contact-form-msg').html("Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
-        $('#quick-contact-form-msg input[type=submit]').removeAttr('disabled');
 
-        setTimeout(function(){
-         
-          $('#quick-contact-form-msg').addClass('hidden');
-          $('#quick-contact-form-msg').removeClass('alert-success');
-
-          $('#quick-contact')[0].reset();
-          
-        }, 5000);
+        
 
 
 
