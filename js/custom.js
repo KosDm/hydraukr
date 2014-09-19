@@ -165,7 +165,7 @@ $( "#quick-contact" ).submit(function() {
         $("#quick-contact #first-name").parent().addClass('has-error')
         
     };
-    if (validateNotEmpty($("#quick-contact #phone-number").val())) {
+    if ((validateNotEmpty($("#quick-contact #phone-number").val()))||(validatePhone($("#quick-contact #phone-number").val()))) {
         error=1
         $("#quick-contact #phone-number").parent().addClass('has-error')
     };
@@ -173,7 +173,7 @@ $( "#quick-contact" ).submit(function() {
 
 if (error==0) {
 
-
+  console.log('i`m send = ' + $("#quick-contact").serialize());
   $('#quick-contact-form input[type=submit]').attr('disabled', 'disabled');
 
   $.ajax({
@@ -186,8 +186,9 @@ if (error==0) {
       if('success' == data.result)
       {
         $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
-        $('#quick-contact-form-msg').html("Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
+        $('#quick-contact-form-msg').html($("#quick-contact #first-name").val() + ", Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
         $('#quick-contact-form input[type=submit]').removeAttr('disabled');
+        console.log('result message=   ' + data.msg[0] );
         setTimeout(function(){
           $('#quick-contact-form-msg').addClass('hidden');
           $('#quick-contact-form-msg').removeClass('alert-success');
@@ -199,7 +200,7 @@ if (error==0) {
       if('error' == data.result)
       {
         $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#quick-contact-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#quick-contact-form-msg').html("Нажаль вас не вдалось записати.");
         $('#quick-contact-form input[type=submit]').removeAttr('disabled');
 
       }
@@ -207,7 +208,7 @@ if (error==0) {
     },
     error:function(data){
         $('#quick-contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#quick-contact-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#quick-contact-form-msg').html("Нажаль вас не вдалось записати. ");
         $('#quick-contact-form input[type=submit]').removeAttr('disabled');
     }
   });
@@ -252,14 +253,14 @@ $( "#newsletter-form" ).submit(function() {
         $("#newsletter-form #first-name").parent().addClass('has-error')
         
     };
-    if (validateNotEmpty($("#newsletter-form #phone-number").val())) {
+    if ((validateNotEmpty($("#newsletter-form #phone-number").val()))||(validatePhone($("#newsletter-form #phone-number").val()))) {
         error=1
         $("#newsletter-form #phone-number").parent().addClass('has-error')
     };
 
 
   if (error==0) {
-  console.log($("#newsletter-form").serialize())
+  console.log('i`m send = ' + $("#newsletter-form").serialize());
   $.ajax({
     type: "POST",
     url: "php/quick-contact.php",
@@ -270,9 +271,9 @@ $( "#newsletter-form" ).submit(function() {
       if('success' == data.result)
       {
         $('#newsletter-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
-        $('#newsletter-form-msg').html("Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
+        $('#newsletter-form-msg').html($("#newsletter-form #first-name").val() + ", Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
         $('#newsletter-form input[type=submit]').removeAttr('disabled');
-        
+        console.log('result message=   ' + data.msg[0] );
         setTimeout(function(){
           $('#newsletter-form-msg').addClass('hidden');
           $('#newsletter-form-msg').removeClass('alert-success');
@@ -284,14 +285,14 @@ $( "#newsletter-form" ).submit(function() {
       if('error' == data.result)
       {
         $('#newsletter-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#newsletter-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#newsletter-form-msg').html("Нажаль вас не вдалось записати.");
         $('#newsletter-form input[type=submit]').removeAttr('disabled');
       }
 
     },
     error:function(data){
         $('#newsletter-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#newsletter-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#newsletter-form-msg').html("Нажаль вас не вдалось записати.");
         $('#newsletter-form input[type=submit]').removeAttr('disabled');
     }
   });
@@ -329,11 +330,11 @@ $( "#contact-form" ).submit(function() {
         $("#contact-form #first-name").parent().addClass('has-error')
         
     };
-    if (validateNotEmpty($("#contact-form #phone-number").val())) {
+    if ((validateNotEmpty($("#contact-form #phone-number").val()))||(validatePhone($("#contact-form #phone-number").val()))) {
         error=1
         $("#contact-form #phone-number").parent().addClass('has-error')
     };
-    if (validateNotEmpty($("#contact-form #guest-email").val())) {
+    if ((validateNotEmpty($("#contact-form #guest-email").val()))||(!validateEmail($("#contact-form #guest-email").val()))) {
         error=1
         $("#contact-form #guest-email").parent().addClass('has-error')
         
@@ -347,6 +348,7 @@ $( "#contact-form" ).submit(function() {
 
 
     if (error==0) {
+        console.log('i`m send = ' + $("#contact-form").serialize());
   $.ajax({
     type: "POST",
     url: "php/full-contact.php",
@@ -357,9 +359,10 @@ $( "#contact-form" ).submit(function() {
       if('success' == data.result)
       {
         $('#contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
-        $('#contact-form-msg').html("Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
+        $('#contact-form-msg').html($("#contact-form #first-name").val() + ", Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
         $('#contact-form input[type=submit]').removeAttr('disabled');
         $('#contact-form')[0].reset();
+        console.log('result message=   ' + data.msg[0] );
         setTimeout(function(){
           $('#contact-form-msg').addClass('hidden');
           $('#contact-form-msg').removeClass('alert-success');
@@ -371,14 +374,14 @@ $( "#contact-form" ).submit(function() {
       if('error' == data.result)
       {
         $('#contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#contact-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#contact-form-msg').html("Нажаль вас не вдалось записати.");
         $('#contact-form input[type=submit]').removeAttr('disabled');
       }
 
     },
     error:function(data){
         $('#contact-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#contact-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#contact-form-msg').html("Нажаль вас не вдалось записати.");
         $('#contact-form input[type=submit]').removeAttr('disabled');
     }
   });
@@ -421,11 +424,11 @@ $( "#checkout-form" ).submit(function() {
         $("#checkout-form #first-name").parent().addClass('has-error')
         
     };
-    if (validateNotEmpty($("#checkout-form #phone-number").val())) {
+    if ((validateNotEmpty($("#checkout-form #phone-number").val()))||(validatePhone($("#checkout-form #phone-number").val()))) {
         error=1
         $("#checkout-form #phone-number").parent().addClass('has-error')
     };
-        if (validateNotEmpty($("#checkout-form #guest-email").val())) {
+    if ((validateNotEmpty($("#checkout-form #guest-email").val()))||(!validateEmail($("#checkout-form #guest-email").val()))) {
         error=1
         $("#checkout-form #guest-email").parent().addClass('has-error')
         
@@ -435,6 +438,7 @@ $( "#checkout-form" ).submit(function() {
         $("#checkout-form #message").parent().addClass('has-error')
     };
     if (error==0) {
+        console.log('i`m send = ' + $("#checkout-form").serialize());
   $.ajax({
     type: "POST",
     url: "php/full-contact.php",
@@ -445,8 +449,9 @@ $( "#checkout-form" ).submit(function() {
       if('success' == data.result)
       {
         $('#checkout-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
-        $('#checkout-form-msg').html("Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
+        $('#checkout-form-msg').html($("#checkout-form #first-name").val() + ", Вас успішно записано. Найближчим часом з вами зв'яжеться наш менеджер.");
         $('#checkout-form input[type=submit]').removeAttr('disabled');
+        console.log('result message=   ' + data.msg[0] );
 
         setTimeout(function(){
           $('.modal').modal('hide');
@@ -462,14 +467,14 @@ $( "#checkout-form" ).submit(function() {
       if('error' == data.result)
       {
         $('#checkout-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#checkout-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#checkout-form-msg').html("Нажаль вас не вдалось записати.");
         $('#checkout-form input[type=submit]').removeAttr('disabled');
       }
 
     },
     error:function(data){
         $('#checkout-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').addClass('alert-danger');
-        $('#checkout-form-msg').html("Нажаль вас не вдалось записати. Відбулась помилка зєднання з сервером");
+        $('#checkout-form-msg').html("Нажаль вас не вдалось записати.");
         $('#checkout-form input[type=submit]').removeAttr('disabled');
     }
   });
@@ -511,56 +516,6 @@ $(".reserve-button").click(function () {
 
 
 
-$( "#car-select-form" ).submit(function() {
-
-  var selectedHydra = $("#car-select").find(":selected").text();
-  var selectedHydraVal = $("#car-select").find(":selected").val();
-  var selectedHydraImage = $("#car-select").val();
-
-  var clientName = $("#first-name").val();
-  var clientPhone = $("#phone-number").val();
-  var clientEmail = $("#guest-email").val();
-
-  var pickupLocation = $("#pick-up-location").val();
-  var dropoffLocation = $("#drop-off-location").val();
-  var pickUpDate = $("#pick-up-date").val();
-  var pickUpTime = $("#pick-up-time").val();
-  var dropOffDate = $("#drop-off-date").val();
-  var dropOffTime = $("#drop-off-time").val();
-
-  var error = 0;
-
-  if(validateNotEmpty(clientName)) { error = 1; }
-  if(validateNotEmpty(clientPhone)) { error = 1; }
-  if(validateNotEmpty(clientEmail)) { error = 1; }
-
-
-  if(0 == error)
-  {
-
-    $("#selected-car-ph").html(selectedHydra);
-    $("#selected-car").val(selectedHydra);
-    $("#selected-vehicle-image").attr('src', selectedHydraImage);
-
-    $("#first-name-ph").html(clientName)
-    $("#first-name-fo").val(clientName)
-
-    $("#phone-number-ph").html(clientPhone)
-    $("#phone-number-fo").val(clientPhone)
-
-    $("#guest-email-ph").html(clientEmail)
-    $("#guest-email-fo").val(clientEmail)
-
-    $('#checkoutModal').modal();
-  }
-  else
-  {
-    $('#car-select-form-msg').css('visibility','visible').hide().fadeIn().removeClass('hidden').delay(2000).fadeOut();
-  }
-
-  return false;
-});
-
 
 
 
@@ -573,5 +528,21 @@ function validateNotEmpty(data){
   }else{
     return false;
   }
+}
+
+/*validateEmail if TRUE is validate if false no validate*/
+function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+} 
+
+/*validatePhone if true is no validate if FALSE is validate*/
+function validatePhone(phone){
+    phone = phone.replace(/[^0-9\+\ ]/g, '');
+    if(phone.length <= 7) { 
+       return true;
+    } else {
+      return false;
+    } 
 }
 

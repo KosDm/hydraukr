@@ -23,7 +23,7 @@ if($isValid === true) {
 	$mail = new SimpleMail();
 	$mail->setTo(YOUR_EMAIL_ADDRESS, YOUR_COMPANY_NAME)
 	->setSubject('Новий клієнт')
-	->setFrom(htmlspecialchars("mailservice@kitgroup.com.ua"), htmlspecialchars("company-mail"))
+	->setFrom(htmlspecialchars("noreply@kitgroup.com.ua"), htmlspecialchars("company-mail"))
 	->addGenericHeader('X-Mailer', 'PHP/' . phpversion())
 	->addGenericHeader('Content-Type', 'text/html; charset="utf-8"')
 	->setMessage(createMessage($_POST))

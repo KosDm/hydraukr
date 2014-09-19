@@ -21,17 +21,17 @@ if($isValid === true) {
 	$mail = new SimpleMail();
 	$mail->setTo(YOUR_EMAIL_ADDRESS, YOUR_COMPANY_NAME)
 	->setSubject('Новий клієнт')
-	->setFrom(htmlspecialchars("mailservice@kitgroup.com.ua"), htmlspecialchars("company-mail"))
+	->setFrom(htmlspecialchars("noreply@kitgroup.com.ua"), htmlspecialchars("company-mail"))
 	->addGenericHeader('X-Mailer', 'PHP/' . phpversion())
 	->addGenericHeader('Content-Type', 'text/html; charset="utf-8"')
 	->setMessage(createMessage($_POST))
 	->setWrap(300);
 
-	$mail->send();
+	$send=$mail->send();
 
 	$result = array(
 		'result' => 'success', 
-		'msg' => array("Success! Your contact request has been send.")
+		'msg' => array("Success! Your contact request has been send. ".$send)
 		);
 
 	echo json_encode($result);
@@ -40,7 +40,7 @@ if($isValid === true) {
 } else {
 	$result = array(
 		'result' => 'error', 
-		'msg' => array($isValid)
+		'msg' => array($isValid.$send)
 		);
 
 	echo json_encode($result);
